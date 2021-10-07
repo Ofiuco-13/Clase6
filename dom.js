@@ -28,12 +28,20 @@ function borrarIntegrantesAnteriores () {
     }
 }
 
+function mostrarBotonCalculo (cantidadIntegrantes) {
+    if (cantidadIntegrantes > 0) {
+        document.querySelector('#calcular').className = ''; 
+    }
+}
+
 document.querySelector('#siguiente-paso').onclick = function () {
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     const cantidadIntegrantes = Number($cantidadIntegrantes.value);
     
+    mostrarBotonCalculo(cantidadIntegrantes);
     borrarIntegrantesAnteriores();
     generarIntegrantes(cantidadIntegrantes);
     
     return false;
 }
+
