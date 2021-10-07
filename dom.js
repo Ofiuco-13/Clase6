@@ -1,3 +1,27 @@
+document.querySelector('#siguiente-paso').onclick = function () {
+    const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
+    const cantidadIntegrantes = Number($cantidadIntegrantes.value);
+    
+    mostrarBotonCalculo(cantidadIntegrantes);
+    borrarIntegrantesAnteriores();
+    generarIntegrantes(cantidadIntegrantes);
+    
+    return false;
+}
+
+function mostrarBotonCalculo (cantidadIntegrantes) {
+    if (cantidadIntegrantes > 0) {
+        document.querySelector('#calcular').className = ''; 
+    }
+}
+
+function borrarIntegrantesAnteriores () {
+    const $integrantes = document.querySelectorAll('.integrante')
+    for (let i = 0; i < $integrantes.length; i++) {
+        $integrantes[i].remove();
+    }
+}
+
 function generarIntegrantes (cantidadIntegrantes) {
     for (let i = 0; i < cantidadIntegrantes; i++) {
         generarIntegrante(i);
@@ -21,28 +45,14 @@ function generarIntegrante (i) {
     $integrantes.appendChild($div);
 }
 
-function borrarIntegrantesAnteriores () {
-    const $integrantes = document.querySelectorAll('.integrante')
-    for (let i = 0; i < $integrantes.length; i++) {
-        $integrantes[i].remove();
-    }
-}
+document.querySelector('#calcular').onclick = function () {
+    const numeros = obtenerEdades();
 
-function mostrarBotonCalculo (cantidadIntegrantes) {
-    if (cantidadIntegrantes > 0) {
-        document.querySelector('#calcular').className = ''; 
-    }
-}
-
-document.querySelector('#siguiente-paso').onclick = function () {
-    const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
-    const cantidadIntegrantes = Number($cantidadIntegrantes.value);
+    document.querySelector('#mayor-edad').textContent = 'La edad mayor es ' + obtenerMayorEdad(numeros);
+    document.querySelector('#menor-edad').textContent = 'La edad menor es ' + obtenerMenorEdad(numeros);
+    document.querySelector('#promedio-edad').textContent = 'La edad promedio es ' + obtenerEdadPromedio(numeros);
     
-    mostrarBotonCalculo(cantidadIntegrantes);
-    borrarIntegrantesAnteriores();
-    generarIntegrantes(cantidadIntegrantes);
-    
-    return false;
+    mostrarAnalisis();
 }
 
 function obtenerEdades () {
@@ -57,14 +67,4 @@ function obtenerEdades () {
 
 function mostrarAnalisis () {
     document.querySelector('#analisis').className = '';
-}
-
-document.querySelector('#calcular').onclick = function () {
-    const numeros = obtenerEdades();
-
-    document.querySelector('#mayor-edad').textContent = 'La edad mayor es ' + obtenerMayorEdad(numeros);
-    document.querySelector('#menor-edad').textContent = 'La edad menor es ' + obtenerMenorEdad(numeros);
-    document.querySelector('#promedio-edad').textContent = 'La edad promedio es ' + obtenerEdadPromedio(numeros);
-    
-    mostrarAnalisis();
 }
