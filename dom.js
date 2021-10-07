@@ -45,3 +45,12 @@ document.querySelector('#siguiente-paso').onclick = function () {
     return false;
 }
 
+function obtenerEdades () {
+    const $integrantes = document.querySelector('.integrante input');
+    const edades = [];
+
+    for (let i = 0; i < $integrantes.length; i++) {
+        edades.push(Number($integrantes[i].value));
+    }
+    return edades;
+}
