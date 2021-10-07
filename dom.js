@@ -46,11 +46,25 @@ document.querySelector('#siguiente-paso').onclick = function () {
 }
 
 function obtenerEdades () {
-    const $integrantes = document.querySelector('.integrante input');
+    const $integrantes = document.querySelectorAll('.integrante input');
     const edades = [];
 
     for (let i = 0; i < $integrantes.length; i++) {
         edades.push(Number($integrantes[i].value));
     }
     return edades;
+}
+
+function mostrarAnalisis () {
+    document.querySelector('#analisis').className = '';
+}
+
+document.querySelector('#calcular').onclick = function () {
+    const numeros = obtenerEdades();
+
+    document.querySelector('#mayor-edad').textContent = 'La edad mayor es ' + obtenerMayorEdad(numeros);
+    document.querySelector('#menor-edad').textContent = 'La edad menor es ' + obtenerMenorEdad(numeros);
+    document.querySelector('#promedio-edad').textContent = 'La edad promedio es ' + obtenerEdadPromedio(numeros);
+    
+    mostrarAnalisis();
 }

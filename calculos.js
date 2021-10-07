@@ -19,9 +19,10 @@ function obtenerMenorEdad (numeros) {
 }
 
 function obtenerEdadPromedio (numeros) {
-    let acumulador;
+    let acumulador = 0;
     for (let i =0; i < numeros.length; i++) {
         acumulador += numeros[i];
     }
-    return (acumulador / numeros.length);
+    const promedio = (acumulador / numeros.length);
+    return promedio;
 }
