@@ -12,6 +12,7 @@ document.querySelector('#siguiente-paso').onclick = function () {
 document.querySelector('#calcular').onclick = function () {
     const numeros = obtenerEdades();
     
+    ocultarBotonCalculo();
     document.querySelector('#mayor-edad').textContent = 'La edad mayor es ' + obtenerMayorEdad(numeros);
     document.querySelector('#menor-edad').textContent = 'La edad menor es ' + obtenerMenorEdad(numeros);
     document.querySelector('#promedio-edad').textContent = 'La edad promedio es ' + obtenerEdadPromedio(numeros);
