@@ -26,7 +26,25 @@
         <p>El promedio de edad es: <strong id="promedio-edad"></strong></p>
     </div>
 
-    <button type="reset" id="resetear">Resetear</button>
+    <button type="reset" id="resetear" class="oculto">Resetear</button>
+
+    <button type="button" id="agregar-input" class="oculto">Agregar salario anual</button>
+    <button type="button" id="quitar-input" class="oculto"></button>
+
+    <div id="salarios">
+
+    </div>
+    
+    <button type="button" id="calcular-salarios" class="oculto">Calcular</button>
+    <br>
+
+    <div id="analisis-salarios">
+        <div id="mayor-salario-anual"></div>
+        <div id="menor-salario-anual"></div>
+        <div id="salario-anual-promedio"></div>
+        <div id="salario-mensual-promedio"></div>
+    </div>
+
 </form>
 
     <script type="text/javascript" src="calculos.js"></script>
