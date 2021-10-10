@@ -1,66 +1,63 @@
-function obtenerMayorEdad (numeros) {
-    let mayorNumero = numeros[0];
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] > mayorNumero) {
-            mayorNumero = numeros[i];
+function obtenerMayorEdad (salarios) {
+    let mayorNumero = salarios[0];
+    for (let i = 0; i < salarios.length; i++) {
+        if (salarios[i] > mayorNumero) {
+            mayorNumero = salarios[i];
         }
     }
-    return mayorNumero
+    return mayorNumero;
 }
 
-function obtenerMenorEdad (numeros) {
-    let menorNumero = numeros[0];
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] < menorNumero) {
-            menorNumero = numeros[i];
+function obtenerMenorEdad (salarios) {
+    let menorNumero = salarios[0];
+    for (let i = 0; i < salarios.length; i++) {
+        if (salarios[i] < menorNumero) {
+            menorNumero = salarios[i];
         }
     }
     return menorNumero;
 }
 
-function obtenerEdadPromedio (numeros) {
+function obtenerEdadPromedio (salarios) {
     let acumulador = 0;
-    for (let i =0; i < numeros.length; i++) {
-        acumulador += numeros[i];
+    for (let i =0; i < salarios.length; i++) {
+        acumulador += salarios[i];
     }
-    const promedio = (acumulador / numeros.length);
-    return promedio;
+    return acumulador / salarios.length;
 }
 
-function obtenerMayorSalarioAnual (numeros) {
-    let mayorSalarioAnual = numeros[0];
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] > mayorSalarioAnual) {
-            mayorSalarioAnual = numeros[i];
+function obtenerMayorSalarioAnual (salarios) {
+    let mayorSalarioAnual = salarios[0];
+    for (let i = 0; i < salarios.length; i++) {
+        if (salarios[i] > mayorSalarioAnual) {
+            mayorSalarioAnual = salarios[i];
         }
     }
     return mayorSalarioAnual;
 }
 
-function obtenerMenorSalarioAnual (numeros) {
-    let menorSalarioAnual = numeros[0];
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] < menorSalarioAnual) {
-            menorSalarioAnual = numeros[i];
+function obtenerMenorSalarioAnual (salarios) {
+    let menorSalarioAnual = salarios[0];
+    for (let i = 0; i < salarios.length; i++) {
+        if (salarios[i] < menorSalarioAnual) {
+            menorSalarioAnual = salarios[i];
         }
     }
     return menorSalarioAnual;
 }
 
-function obtenerSalarioAnualPromedio (numeros) {
+function obtenerSalarioAnualPromedio (salarios) {
     let acumulador = 0;
-    for (let i =0; i < numeros.length; i++) {
-        acumulador += numeros[i];
+    for (let i =0; i < salarios.length; i++) {
+        acumulador += salarios[i];
     }
-    const promedio = (acumulador / numeros.length);
-    return promedio;
+    return acumulador / salarios.length;
 }
 
-function obtenerSalarioMensualPromedio (numeros) {
-    let mayorSalarioAnual = obtenerMayorSalarioAnual(numeros);
-    let menorSalarioAnual = obtenerMenorSalarioAnual(numeros);
-
-    let salarioTotal = mayorSalarioAnual + menorSalarioAnual;
-
-    return Math.floor(salarioTotal / 12);
+function obtenerSalarioMensualPromedio (salarios) {
+    let acumulador = 0;
+    for (let i = 0; i < salarios.length; i++) {
+        acumulador += salarios[i];
+    }
+    return acumulador / 12;
 }

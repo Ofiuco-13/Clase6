@@ -31,12 +31,12 @@ document.querySelector('#agregar-input').onclick  = function () {
 }
 
 document.querySelector('#calcular-salarios').onclick = function () {
-    const numeros = obtenerSalarios();
+    const salarios = obtenerSalarios();
 
-    document.querySelector('#mayor-salario-anual').textContent = 'Mayor salario anual: ' + obtenerMayorSalarioAnual(numeros);
-    document.querySelector('#menor-salario-anual').textContent = 'Menor salario anual: ' + obtenerMenorSalarioAnual(numeros);
-    document.querySelector('#salario-anual-promedio').textContent = 'Salario anual promedio: ' + obtenerSalarioAnualPromedio(numeros);
-    document.querySelector('#salario-mensual-promedio').textContent = 'Salario mensual promedio: ' + obtenerSalarioMensualPromedio(numeros);
+    document.querySelector('#mayor-salario-anual').textContent = 'Mayor salario anual: ' + obtenerMayorSalarioAnual(salarios);
+    document.querySelector('#menor-salario-anual').textContent = 'Menor salario anual: ' + obtenerMenorSalarioAnual(salarios);
+    document.querySelector('#salario-anual-promedio').textContent = 'Salario anual promedio: ' + obtenerSalarioAnualPromedio(salarios);
+    document.querySelector('#salario-mensual-promedio').textContent = 'Salario mensual promedio: ' + obtenerSalarioMensualPromedio(salarios);
 }
 
 function mostrarBotonCalculo (cantidadIntegrantes) {
@@ -103,14 +103,14 @@ function resetear () {
 function generarSalario () {
     
     const $div = document.createElement('div');
-    $div.className = 'salario'
+    $div.className = 'salario';
 
     const $label = document.createElement('label');
     $label.textContent = 'Salario # ';
 
     const $input = document.createElement('input');
     $input.type = 'number';
-    $input.placeholder = 'Ej: 350000'
+    $input.placeholder = 'Ej: 350000';
     $input.min = '0';
 
     $div.appendChild($label);
