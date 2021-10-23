@@ -39,10 +39,28 @@ document.querySelector('#calcular-salarios').onclick = function () {
     document.querySelector('#salario-mensual-promedio').textContent = 'Salario mensual promedio: ' + obtenerSalarioMensualPromedio(salarios);
 }
 
-function mostrarBotonCalculo (cantidadIntegrantes) {
-    if (cantidadIntegrantes > 0) {
-        document.querySelector('#calcular').className = ''; 
-    }
+document.querySelector("#agregar-input").onclick = function () {
+  generarSalario();
+  mostrarBotonCalcularSalarios();
+};
+
+document.querySelector("#calcular-salarios").onclick = function () {
+  const salarios = obtenerSalarios();
+
+  document.querySelector("#mayor-salario-anual").textContent =
+    "Mayor salario anual: " + obtenerMayorSalarioAnual(salarios);
+  document.querySelector("#menor-salario-anual").textContent =
+    "Menor salario anual: " + obtenerMenorSalarioAnual(salarios);
+  document.querySelector("#salario-anual-promedio").textContent =
+    "Salario anual promedio: " + obtenerSalarioAnualPromedio(salarios);
+  document.querySelector("#salario-mensual-promedio").textContent =
+    "Salario mensual promedio: " + obtenerSalarioMensualPromedio(salarios);
+};
+
+function mostrarBotonCalculo(cantidadIntegrantes) {
+  if (cantidadIntegrantes > 0) {
+    document.querySelector("#calcular").className = "";
+  }
 }
 
 function borrarIntegrantesAnteriores () {
@@ -137,6 +155,37 @@ function borrarSalariosAnteriores () {
     }
 }
 
+function validarIntegrantes(cantidadIntegrantes) {
+  if (cantidadIntegrantes === 0) {
+    return "Para seguir necesita poner su cantidad de integrantes";
+  }
+
+  if (cantidadIntegrantes > 100) {
+    return "Este campo solo admite 100 integrantes";
+  }
+
+  if (cantidadIntegrantes === "") {
+    return "Ingrese su cantidad de integrantes para seguir";
+  }
+
+  if (!/^[0-9]+$/i.test(cantidadIntegrantes)) {
+    return "Este campo solo acepta numeros";
+  }
+
+  return "";
+}
+
+function validarEdadIntegrantes() {
+  const $edadIntegrantes = document.querySelectorAll(".integrante input");
+
+  for (let i = 0; i < $edadIntegrantes; i++) {
+    if (!/^[0-9]+$/i.test($edadIntegrantes)) {
+      return "Error: no se pudieron calcular las edades, ingrese un valor valido";
+    }
+  }
+
+  return "";
+}
 
 function ocultarBotonCalculo () {
     document.querySelector('#calcular').className = 'oculto';
