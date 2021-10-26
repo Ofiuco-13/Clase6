@@ -1,8 +1,8 @@
 document.querySelector("#siguiente-paso").onclick = function () {
   const $cantidadIntegrantes = document.querySelector("#cantidad-integrantes");
   const cantidadIntegrantes = Number($cantidadIntegrantes.value);
-
-  //validarFormulario();
+  
+  validarIntegrantes(cantidadIntegrantes);
   mostrarBotonCalculo(cantidadIntegrantes);
   ocultarBotonResetear();
   borrarIntegrantesAnteriores(cantidadIntegrantes);
@@ -75,6 +75,7 @@ function generarIntegrante(i) {
 
   const $input = document.createElement("input");
   $input.type = "number";
+  $input.name = "edades";
 
   $div.appendChild($label);
   $div.appendChild($input);
@@ -119,6 +120,7 @@ function generarSalario() {
   $input.type = "number";
   $input.placeholder = "Ej: 350000";
   $input.min = "0";
+  $input.name = "salarios";
 
   $div.appendChild($label);
   $div.appendChild($input);
@@ -144,21 +146,13 @@ function borrarSalariosAnteriores() {
   }
 }
 
-function validarFormulario() {
-    
-}
-
 function validarIntegrantes(integrantes) {
-  if (integrantes === 0) {
+  if (integrantes.length === 0) {
     return "Para seguir necesita poner su cantidad de integrantes";
   }
 
   if (integrantes > 100) {
     return "Este campo solo admite 100 integrantes";
-  }
-
-  if (integrantes === "") {
-    return "Ingrese su cantidad de integrantes para seguir";
   }
 
   if (!/^[0-9]+$/i.test(integrantes)) {
