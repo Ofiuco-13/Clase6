@@ -44,6 +44,8 @@ document.querySelector("#calcular-salarios").onclick = function () {
     "Salario anual promedio: " + obtenerSalarioAnualPromedio(salarios);
   document.querySelector("#salario-mensual-promedio").textContent =
     "Salario mensual promedio: " + obtenerSalarioMensualPromedio(salarios);
+
+  mostrarBotonEnviarFormulario();
 };
 
 function validarFormulario() {
@@ -259,4 +261,8 @@ function ocultarBotonCalcularSalarios() {
 
 function ocultarResultadoSalarios() {
   document.querySelector("#analisis-salarios").className = "oculto";
+}
+
+function mostrarBotonEnviarFormulario() {
+  document.querySelector("#enviar-form").className = "";
 }
