@@ -235,12 +235,15 @@ function validarEdades(edades) {
 }
 
 function validarSalarios(salarios) {
-  if (!/[0-9]+/.test(salarios)) {
-    return "Error: no se pudieron calcular los salarios, ingrese un valor valido";
-  }
+  const $salarios = document.querySelectorAll("#salarios input");
+  for (let i = 0; i < $salarios.length; i++) {
+    if (!/[0-9]/.test(salarios[i].value)) {
+      return "Error: no se pudieron calcular los salarios, ingrese un valor valido";
+    }
 
-  if (salarios === 0) {
-    return "Error: el salario no puede valer 0";
+    if (salarios[i].value === 0) {
+      return "Error: el salario no puede valer 0";
+    }
   }
 
   return "";
@@ -291,3 +294,4 @@ function mostrarBotonEnviarFormulario() {
 function ocultarBotonEnviarFormulario() {
   document.querySelector("#enviar-form").className = "oculto";
 }
+
