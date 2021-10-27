@@ -104,7 +104,20 @@ function crearMensajeErrores(errores) {
       $form[key].className = "";
     }
   });
+  const $erroresAnteriores = document.querySelectorAll("#errores li");
+  if ($erroresAnteriores.length === 0) {
+    $form.className = "oculto";
+    document.querySelector("#exito").className = "";
+    redireccionar();
+  }
+
   return cantidadErrores;
+}
+
+function redireccionar() {
+  setTimeout(() => {
+    window.location.replace("datos.html");
+  }, 4000);
 }
 
 function mostrarBotonCalculo(cantidadIntegrantes) {
@@ -168,7 +181,7 @@ function resetear() {
   ocultarBotonCalcularSalarios();
   ocultarResultadoSalarios();
   ocultarBotonEnviarFormulario();
-  ocultarMensajesDeError()
+  ocultarMensajesDeError();
 }
 
 function generarSalario() {
