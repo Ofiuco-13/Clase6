@@ -150,6 +150,7 @@ function resetear() {
   borrarSalariosAnteriores();
   ocultarBotonCalcularSalarios();
   ocultarResultadoSalarios();
+  ocultarBotonEnviarFormulario();
 }
 
 function generarSalario() {
@@ -265,4 +266,8 @@ function ocultarResultadoSalarios() {
 
 function mostrarBotonEnviarFormulario() {
   document.querySelector("#enviar-form").className = "";
+}
+
+function ocultarBotonEnviarFormulario() {
+  document.querySelector("#enviar-form").className = "oculto";
 }
