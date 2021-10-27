@@ -3,7 +3,6 @@ document.querySelector("#siguiente-paso").onclick = function () {
   const cantidadIntegrantes = Number($cantidadIntegrantes.value);
 
   mostrarBotonCalculo(cantidadIntegrantes);
-  ocultarBotonResetear();
   borrarIntegrantesAnteriores(cantidadIntegrantes);
   generarIntegrantes(cantidadIntegrantes);
   mostrarBotonResetear(cantidadIntegrantes);
@@ -47,6 +46,24 @@ document.querySelector("#calcular-salarios").onclick = function () {
 
   mostrarBotonEnviarFormulario();
 };
+
+const $form = document.querySelector("#calculador-edades");
+$form.submit.onclick = function () {
+  borrarErroresAnteriores();
+  validarFormulario();
+
+  return false;
+};
+
+function borrarErroresAnteriores() {
+  let $errores = document.querySelectorAll("#errores li");
+
+  if ($errores.length > 0) {
+    for (let i = 0; i < $errores.length; i++) {
+      $errores[i].remove();
+    }
+  }
+}
 
 function validarFormulario() {
   const $form = document.querySelector("#calculador-edades");
