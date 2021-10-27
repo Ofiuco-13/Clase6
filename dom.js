@@ -224,8 +224,11 @@ function validarIntegrantes(integrantes) {
 }
 
 function validarEdades(edades) {
-  if (!/[0-9]+/.test(edades)) {
-    return "Error: no se pudieron calcular las edades, ingrese un valor valido";
+  const $edades = document.querySelectorAll(".integrante input");
+  for (let i = 0; i < $edades.length; i++) {
+    if (!/[0-9]/.test(edades[i].value)) {
+      return "Error: no se pudieron calcular las edades, ingrese un valor valido";
+    }
   }
 
   return "";
