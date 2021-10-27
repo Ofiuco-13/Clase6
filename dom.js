@@ -1,8 +1,7 @@
 document.querySelector("#siguiente-paso").onclick = function () {
   const $cantidadIntegrantes = document.querySelector("#cantidad-integrantes");
   const cantidadIntegrantes = Number($cantidadIntegrantes.value);
-  
-  validarIntegrantes(cantidadIntegrantes);
+
   mostrarBotonCalculo(cantidadIntegrantes);
   ocultarBotonResetear();
   borrarIntegrantesAnteriores(cantidadIntegrantes);
@@ -46,6 +45,48 @@ document.querySelector("#calcular-salarios").onclick = function () {
   document.querySelector("#salario-mensual-promedio").textContent =
     "Salario mensual promedio: " + obtenerSalarioMensualPromedio(salarios);
 };
+
+function validarFormulario() {
+  const $form = document.querySelector("#calculador-edades");
+
+  const integrantes = $form.integrantes.value;
+  const edades = $form.edades;
+  const salarios = $form.salarios;
+
+  const errorIntegrantes = validarIntegrantes(integrantes);
+  const errorEdades = validarEdades(edades);
+  const errorSalarios = validarSalarios(salarios);
+
+  const errores = {
+    integrantes: errorIntegrantes,
+    edades: errorEdades,
+    salarios: errorSalarios,
+  };
+
+  crearMensajeErrores(errores);
+}
+
+function crearMensajeErrores(errores) {
+  const keys = Object.keys(errores);
+  const $errores = document.querySelector("#errores");
+  let cantidadErrores = 0;
+
+  keys.forEach(function (key) {
+    const error = errores[key];
+
+    if (error) {
+      cantidadErrores++;
+      $form[key].className = "error";
+
+      const $error = document.createElement("li");
+      $error.innerText = error;
+      $errores.appendChild($error);
+    } else {
+      $form[key].className = "";
+    }
+  });
+  return cantidadErrores;
+}
 
 function mostrarBotonCalculo(cantidadIntegrantes) {
   if (cantidadIntegrantes > 0) {
