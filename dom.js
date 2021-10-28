@@ -226,8 +226,8 @@ function validarIntegrantes(integrantes) {
     return "Para seguir necesita poner su cantidad de integrantes";
   }
 
-  if (integrantes > 100) {
-    return "Este campo solo admite 100 integrantes";
+  if (integrantes > 10) {
+    return "Este campo solo admite 10 integrantes";
   }
 
   if (!/^[0-9]+$/i.test(integrantes)) {
@@ -241,7 +241,7 @@ function validarEdades(edades) {
   const $edades = document.querySelectorAll(".integrante input");
   for (let i = 0; i < $edades.length; i++) {
     if (!/[0-9]/.test(edades[i].value)) {
-      return "Error: no se pudieron calcular las edades, ingrese un valor valido";
+      return "Error: no se pudieron calcular las edades, ingrese un valor correcto";
     }
   }
 
