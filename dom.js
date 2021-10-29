@@ -69,11 +69,12 @@ function validarFormulario() {
   const $form = document.querySelector("#calculador-edades");
 
   const integrantes = $form.integrantes.value;
-  const edades = $form.edades;
-  const salarios = $form.salarios;
-
   const errorIntegrantes = validarIntegrantes(integrantes);
+  
+  const edades = obtenerEdades();
   const errorEdades = validarEdades(edades);
+
+  const salarios = obtenerSalarios;
   const errorSalarios = validarSalarios(salarios);
 
   const errores = {
@@ -238,9 +239,10 @@ function validarIntegrantes(integrantes) {
 }
 
 function validarEdades(edades) {
-  const $edades = document.querySelectorAll(".integrante input");
-  for (let i = 0; i < $edades.length; i++) {
-    if (!/[0-9]/.test(edades[i].value)) {
+  const edadesInt = parseInt(edades);
+
+  for (let i = 0; i < edades.length; i++) {
+    if (!/[0-9]/.test(edadesInt)) {
       return "Error: no se pudieron calcular las edades, ingrese un valor correcto";
     }
   }
@@ -249,13 +251,14 @@ function validarEdades(edades) {
 }
 
 function validarSalarios(salarios) {
-  const $salarios = document.querySelectorAll("#salarios input");
-  for (let i = 0; i < $salarios.length; i++) {
-    if (!/[0-9]/.test(salarios[i].value)) {
+  const salariosInt = parseInt(salarios);
+
+  for (let i = 0; i < salarios.length; i++) {
+    if (!/[0-9]/.test(salariosInt) && isNaN(salariosInt)) {
       return "Error: no se pudieron calcular los salarios, ingrese un valor valido";
     }
 
-    if (salarios[i].value === 0) {
+    if (salariosInt === 0) {
       return "Error: el salario no puede valer 0";
     }
   }
